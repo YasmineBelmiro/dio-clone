@@ -1,28 +1,59 @@
+import { MdEmail, MdLock } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
+
 import { Button } from "../../Components/Button";
 import { Header } from "../../Components/Header";
-import { Input } from "../../Components/Header/styles";
+import { Input } from "../../Components/Input";
 
-import { Container, Title, TitleHeighLight, TextContent } from "./styles";
+import {
+  Container,
+  Title,
+  TitleLogin,
+  SubtitleLogin,
+  EsqueciText,
+  CriarText,
+  Wrapper,
+  Column,
+  Row,
+} from "./styles";
 
 const Login = () => {
+
+  const navigate = useNavigate();
+
+  const hanldeClickSignIn = () => {
+    navigate("/feed");
+  };
+
   return (
     <>
       <Header />
       <Container>
-        <div>
-          <TitleHeighLight>Implemente</TitleHeighLight>
-          <br />
-          <Title>O seu futuro global agora!</Title>
-          <TextContent>
-            Domine as tecnologias utilizadas pelas empresas mais inovadoras do
-            mundo e encare seu novo desafio profissional, evoluindo em
-            comunidade com os melhores experts.
-          </TextContent>
-          <Button title='Começar agora' variant="secondary" onClick={() => null} />
-        </div>
-        <div>
-          <Input placeholder="Email"/>
-        </div>
+        <Column>
+          <Title>
+            A plataforma para você aprender com experts, dominar as principais
+            tecnologias e entrar mais rápido nas empresas mais desejadas.
+          </Title>
+        </Column>
+        <Column>
+          <Wrapper>
+            <TitleLogin>Faça seu cadastro</TitleLogin>
+            <SubtitleLogin>Faça seu login e make the change._</SubtitleLogin>
+            <form>
+              <Input placeholder="Email" leftIcon={<MdEmail />} />
+              <Input
+                placeholder="Senha"
+                type="password"
+                leftIcon={<MdLock />}
+              />
+              <Button title="Entrar" variant="secondary" onClick={hanldeClickSignIn} type="button"/>
+            </form>
+            <Row>
+              <EsqueciText>Esqueci minha senha</EsqueciText>
+              <CriarText>Criar conta</CriarText>
+            </Row>
+          </Wrapper>
+        </Column>
       </Container>
     </>
   );
