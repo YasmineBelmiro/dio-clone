@@ -4,7 +4,7 @@ import { Button } from "../../Components/Button";
 import { Header } from "../../Components/Header";
 import bannerImage from "../../assets/banner.png";
 
-import { Container, Title, TitleHighlight, TextContent } from "./styles";
+import { Container, Title, TextContent, Banner } from "./styles";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -17,13 +17,15 @@ const Home = () => {
       <Header />
       <Container>
         <div>
-          <TitleHighlight>Implemente</TitleHighlight>
-          <br />
-          <Title>O seu futuro global agora!</Title>
-          <TextContent>
+          <Title>
             Domine as tecnologias utilizadas pelas empresas mais inovadoras do
-            mundo e encare seu novo desafio profissional, evoluindo em
-            comunidade com os melhores experts.
+            mundo
+          </Title>
+          <TextContent>
+            +1.750 cursos, bootcamps, projetos e formações nas carreiras de
+            back-end, front-end, mobile, games, data, inteligência artificial &
+            cloud para elevar o seu nível profissional e conquistar
+            oportunidades nas empresas mais desejadas do mundo
           </TextContent>
           <Button
             title="Começar agora"
@@ -31,9 +33,9 @@ const Home = () => {
             onClick={hanldeClickSignIn}
           />
         </div>
-        <div>
+        <Banner>
           <img src={bannerImage} alt="banner" />
-        </div>
+        </Banner>
       </Container>
     </>
   );

@@ -1,43 +1,45 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Container = styled.main`
-    width: 100%;
-    max-width: 80%;
-    margin: 0 auto;
-    margin-top: 120px;
+  width: 100%;
 
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-`
-
+  margin: 0 auto;
+  margin-top: 14%;
+  
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+`;
 
 export const Title = styled.h2`
-    font-family: 'Open Sans';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 32px;
-    width: 320px;
-    margin-bottom: 20px;
-    line-height: 44px;
+  font-family: "Open Sans";
+  font-style: normal;
 
-    color: #FFFFFF;
-`
+  font-size: 45px;
+  width: 820px;
+  margin-bottom: 50px;
 
-export const TitleHighlight = styled.span`
-    color: #E4105D;;
-`
+  text-align: justify;
+  color: #ffffff;
+`;
 
 export const TextContent = styled.p`
-    font-family: 'Open Sans';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 22px;
-    width: 420px;
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 19px;
+  line-height: 28px;
 
-    margin-bottom: 20px;
+  width: 820px;
+  text-align: justify;
+  margin-bottom: 50px;
+  color: #ffffff;
+`;
 
-    color: #FFFFFF;
-`
+export const Banner = styled.div`
+  img {
+    display: block;
+    margin-left: 400px;
+  }
+`;

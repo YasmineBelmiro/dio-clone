@@ -1,4 +1,4 @@
-import { MdEmail, MdLock, MdCheck } from "react-icons/md";
+import { MdEmail, MdLock, MdCheck, MdPerson, MdPhone } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -25,20 +25,22 @@ import vivo from "../../assets/vivo.png";
 import {
   Container,
   Title,
-  TitleLogin,
-  SubtitleLogin,
-  EsqueciText,
-  CriarText,
+  TitleRegister,
+  SubtitleRegister,
+  LoginText,
   Wrapper,
   Column,
-  Row,
   TextContent,
   CompanyContainer,
+  Text,
+  TenhoConta,
 } from "./styles";
 
 const schema = yup
   .object({
+    nome: yup.string().required("Campo obrigatório"),
     email: yup.string().email("email n é valido").required("Campo obrigatório"),
+    telefone: yup.string().required("Campo obrigatório"),
     password: yup
       .string()
       .min(8, "No minino 8 caracteres")
@@ -46,7 +48,7 @@ const schema = yup
   })
   .required();
 
-const Login = () => {
+const Register = () => {
   const navigate = useNavigate();
 
   const {
@@ -57,16 +59,21 @@ const Login = () => {
 
   const onSubmit = async (FormData) => {
     try {
-      const { data } = await api.get(
-        `user?email${FormData.email}&senha=${FormData.password}`
-      );
-      if (data.length === 1) {
+      const response = await api.post('user', {
+        nome: FormData.nome,
+        email: FormData.email,
+        telefone: FormData.telefone,
+        password: FormData.password
+      });
+      if (response.status === 201) {
+        console.log("Cadastro realizado com sucesso. Redirecionando para o feed...");
         navigate("/feed");
       } else {
-        alert("Email ou senha incorretos.");
+        alert("Não foi possível realizar o cadastro. Verifique os dados e tente novamente.");
       }
-    } catch {
-      alert("Houve um erro!");
+    } catch (error) {
+      console.error("Erro ao tentar realizar o cadastro:", error);
+      alert("Houve um erro ao tentar realizar o cadastro!");
     }
   };
 
@@ -117,15 +124,29 @@ const Login = () => {
         </Column>
         <Column>
           <Wrapper>
-            <TitleLogin>Já tem cadastro?</TitleLogin>
-            <SubtitleLogin>Faça seu login</SubtitleLogin>
+            <TitleRegister>Crie sua conta grátis</TitleRegister>
+            <SubtitleRegister>Preencha seus dados</SubtitleRegister>
             <form onSubmit={handleSubmit(onSubmit)}>
+              <Input
+                name="nome"
+                errorMensage={errors.nome?.message}
+                control={control}
+                placeholder="*Nome completo"
+                leftIcon={<MdPerson color="#7F28B5" size={20} />}
+              />
               <Input
                 name="email"
                 errorMensage={errors.email?.message}
                 control={control}
-                placeholder="Email"
-                leftIcon={<MdEmail color="#7F28B5"  size={20}/>}
+                placeholder="*O seu melhor @email"
+                leftIcon={<MdEmail color="#7F28B5" size={20} />}
+              />
+              <Input
+                name="telefone"
+                errorMensage={errors.telefone?.message}
+                control={control}
+                placeholder="+55 (99) 99999-9999"
+                leftIcon={<MdPhone color="#7F28B5" size={20} />}
               />
               <Input
                 name="password"
@@ -133,14 +154,22 @@ const Login = () => {
                 errorMensage={errors.password?.message}
                 placeholder="Senha"
                 type="password"
-                leftIcon={<MdLock color="#7F28B5" size={20}/>}
+                leftIcon={<MdLock color="#7F28B5" size={20} />}
               />
-              <Button title="Entrar" variant="tertiary" type="submit" />
+              <Button
+                title="Criar minha conta grátis"
+                variant="tertiary"
+                type="submit"
+              />
             </form>
-            <Row>
-              <EsqueciText href="#">Esqueci minha senha.</EsqueciText>
-              <a href="#">Criar conta</a>
-            </Row>
+            <Text color="#000">
+              Ao clicar em "criar minha conta grátis", declaro que aceito as
+              Políticas de Privacidade e os Termos de Uso da DIO.
+            </Text>
+
+            <TenhoConta>
+              Já tenho conta. <LoginText href="#"> Fazer login</LoginText>
+            </TenhoConta>
           </Wrapper>
         </Column>
       </Container>
@@ -148,4 +177,4 @@ const Login = () => {
   );
 };
 
-export { Login };
+export { Register };

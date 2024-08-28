@@ -29,14 +29,6 @@ export const Column = styled.div`
   flex: 1;
 `;
 
-export const Row = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 20px;
-`;
-
 export const Title = styled.h2`
   font-family: "Open Sans";
   font-style: normal;
@@ -49,7 +41,7 @@ export const Title = styled.h2`
   color: #ffffff;
 `;
 
-export const TitleLogin = styled.p`
+export const TitleRegister = styled.p`
   font-family: "Open Sans";
   font-style: normal;
   font-weight: 700;
@@ -59,7 +51,7 @@ export const TitleLogin = styled.p`
   color: #7F28B5;
 `;
 
-export const SubtitleLogin = styled.p`
+export const SubtitleRegister = styled.p`
   font-family: "Open Sans";
   font-style: normal;
   font-weight: 400;
@@ -69,26 +61,12 @@ export const SubtitleLogin = styled.p`
   color: #000;
 `;
 
-export const EsqueciText = styled.a`
-  font-family: "Open Sans";
-  font-style: normal;
- 
-  font-size: 18px;
-  line-height: 19px;
-  text-decoration: none;
-  color: #000;
 
-  &:hover{
-    text-decoration: underline;
-    cursor: pointer;
-    }
-`;
-
-export const CriarText = styled.a`
+export const LoginText = styled.a`
   font-family: "Open Sans";
   font-style: normal;
  text-decoration: none;
-  font-size: 18px;
+  font-size: 22px;
   line-height: 19px;
 
   color: #000;
@@ -132,3 +110,24 @@ export const CompanyContainer = styled.div`
         width: auto;
     }
 }`;
+
+export const Text = styled.p`
+  font-family: "Open Sans";
+  font-style: normal;
+
+  font-size: 15px;
+  line-height: 28px;
+  text-align: left;
+  color: #000;
+`;
+
+export const TenhoConta = styled.p`
+  font-family: "Open Sans";
+  font-style: normal;
+
+  font-size: 19px;
+  line-height: 28px;
+
+  color: #000;
+`;
+
